@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>State Data Center Incentives: A Five-State Comparison</title>
+<meta name="description" content="A comparison of the data center sales tax exemptions in Pennsylvania, Virginia, Ohio, Maryland, and Georgia, current as of September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --limestone: #EDF0F1;
+    --paper: #FFFFFF;
+    --ink: #1B2631;
+    --slate: #52606D;
+    --rule: #CBD2D9;
+    --accent: #1F5C4A;
+    --accent-soft: #DCEBE5;
+    --font: "Public Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--limestone);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .measure { max-width: 68ch; }
+
+  /* Header */
+  header { padding: 64px 0 40px; }
+  h1 {
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    max-width: 18ch;
+  }
+  .lede { font-size: 1.15rem; color: var(--slate); margin: 0; }
+
+  /* Where each state stands */
+  .standing {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 3px solid var(--ink);
+    margin-top: 40px;
+  }
+  .standing div {
+    padding: 16px 16px 20px 0;
+    border-right: 1px solid var(--rule);
+    padding-left: 16px;
+  }
+  .standing div:first-child { padding-left: 0; }
+  .standing div:last-child { border-right: 0; }
+  .standing strong { display: block; font-size: 1.25rem; font-weight: 700; }
+  .standing span { display: block; color: var(--slate); font-size: 0.95rem; }
+  .standing time { display: block; font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-top: 6px; }
+
+  /* Comparison */
+  section { padding: 48px 0; }
+  h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 12px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 20px; align-items: center; }
+  .filters p { margin: 0 8px 0 0; color: var(--slate); font-size: 0.95rem; }
+  .chip {
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border: 1.5px solid var(--accent);
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+  }
+  .chip[aria-pressed="false"] { background: transparent; color: var(--accent); }
+  .table-scroll {
+    overflow-x: auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 0.92rem; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+  thead th {
+    font-size: 1rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--ink);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+  }
+  tbody th {
+    font-weight: 600;
+    color: var(--slate);
+    width: 170px;
+    position: sticky;
+    left: 0;
+    background: var(--paper);
+  }
+  tr.group th {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  [hidden] { display: none !important; }
+  td.empty { color: var(--slate); font-style: italic; }
+  td.sources a { display: block; word-break: break-word; margin-bottom: 4px; }
+  .status-msg { padding: 24px; color: var(--slate); }
+
+  /* Analysis */
+  .analysis { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .analysis h3 { font-size: 1.1rem; font-weight: 700; margin: 24px 0 4px; }
+  .analysis p { margin: 0; }
+  .question {
+    margin-top: 32px;
+    padding-left: 20px;
+    border-left: 4px solid var(--accent);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  ul.watch { padding-left: 1.1em; margin: 12px 0 0; }
+  ul.watch li { margin-bottom: 10px; }
+
+  footer { border-top: 1px solid var(--rule); padding: 40px 0 64px; color: var(--slate); font-size: 0.95rem; }
+  footer p { margin: 0 0 12px; }
+
+  @media (max-width: 800px) {
+    .standing { grid-template-columns: 1fr 1fr; }
+    .standing div { border-right: 0; border-bottom: 1px solid var(--rule); padding-left: 0; }
+    .analysis { grid-template-columns: 1fr; gap: 16px; }
+    header { padding-top: 40px; }
+  }
+  @media print {
+    .filters { display: none; }
+    body { background: #fff; }
+    .table-scroll { overflow: visible; border: 0; }
+    thead th, tbody th { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>State data center incentives, compared</h1>
+    <p class="lede measure">How Pennsylvania, Virginia, Ohio, Maryland, and Georgia exempt data center equipment from sales tax, what each state asks in return, and where each program is headed. Current as of September 2026.</p>
+
+    <div class="standing" aria-label="Where each state's program stands in 2026">
+      <div><strong>Pennsylvania</strong><span>Senate memo signals repeal interest</span><time datetime="2026-04">April 2026</time></div>
+      <div><strong>Virginia</strong><span>Legislative study of the exemption underway</span><time datetime="2026-12-15">Report due Dec 15</time></div>
+      <div><strong>Ohio</strong><span>New applications paused through the governor's term</span><time datetime="2026-05-27">Since May 27</time></div>
+      <div><strong>Maryland</strong><span>Governor on record for repeal</span><time datetime="2026-09-23">Sept 23, 2026</time></div>
+      <div><strong>Georgia</strong><span>Bills to end the program early did not pass</span><time datetime="2026">2026 session</time></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="comparison">
+    <div class="wrap">
+      <h2>Side-by-side comparison</h2>
+      <p class="measure">Choose which states to compare. On a phone, scroll the table sideways.</p>
+      <div class="filters" id="filters" role="group" aria-label="States to compare"><p>Showing:</p><button class="chip" type="button" aria-pressed="true" data-state="pennsylvania">Pennsylvania</button><button class="chip" type="button" aria-pressed="true" data-state="virginia">Virginia</button><button class="chip" type="button" aria-pressed="true" data-state="ohio">Ohio</button><button class="chip" type="button" aria-pressed="true" data-state="maryland">Maryland</button><button class="chip" type="button" aria-pressed="true" data-state="georgia">Georgia</button></div>
+      <div class="table-scroll" tabindex="0" aria-label="Comparison table">
+        <table id="table">
+<thead><tr><th scope="col"></th>
+<th scope="col" data-state="pennsylvania">Pennsylvania</th>
+<th scope="col" data-state="virginia">Virginia</th>
+<th scope="col" data-state="ohio">Ohio</th>
+<th scope="col" data-state="maryland">Maryland</th>
+<th scope="col" data-state="georgia">Georgia</th>
+</tr></thead><tbody>
+<tr class="group"><th colspan="6" scope="colgroup">The program</th></tr>
+<tr><th scope="row">Program</th>
+<td data-state="pennsylvania">Computer Data Center Equipment Exemption Program</td>
+<td data-state="virginia">Data Center Retail Sales and Use Tax Exemption</td>
+<td data-state="ohio">Data Center Sales and Use Tax Exemption</td>
+<td data-state="maryland">Data Center Maryland Sales and Use Tax Exemption</td>
+<td data-state="georgia">High-Technology Data Center Equipment Exemption</td>
+</tr>
+<tr><th scope="row">Legal authority</th>
+<td data-state="pennsylvania">Act 84 of 2016, amended by Act 13 of 2019 and Act 25 of 2021; 72 P.S. § 9931-D</td>
+<td data-state="virginia">Va. Code § 58.1-609.3</td>
+<td data-state="ohio">Ohio Rev. Code § 122.175</td>
+<td data-state="maryland">SB 397 (2020); Md. Tax-General § 11-239</td>
+<td data-state="georgia">O.C.G.A. § 48-8-3(68.1); HB 696 (2018), amended by HB 1291 (2022)</td>
+</tr>
+<tr><th scope="row">Administered by</th>
+<td data-state="pennsylvania">Department of Revenue</td>
+<td data-state="virginia">Virginia Economic Development Partnership (MOU) and Department of Taxation</td>
+<td data-state="ohio">Ohio Tax Credit Authority</td>
+<td data-state="maryland">Department of Commerce (certification) and Comptroller (exemption certificate)</td>
+<td data-state="georgia">Department of Revenue</td>
+</tr>
+<tr class="group"><th colspan="6" scope="colgroup">What it takes to qualify</th></tr>
+<tr><th scope="row">Minimum investment</th>
+<td data-state="pennsylvania">$75M (county of 250,000 or fewer); $100M (larger county)</td>
+<td data-state="virginia">$150M; $70M in distressed localities</td>
+<td data-state="ohio">$100M over three years</td>
+<td data-state="maryland">$2M (Tier 1 area); $5M elsewhere</td>
+<td data-state="georgia">$250M (county population over 50,000); $75M (30,001 to 50,000); $25M (30,000 or fewer); over a seven-year investment period</td>
+</tr>
+<tr><th scope="row">Jobs</th>
+<td data-state="pennsylvania">25 new jobs (county of 250,000 or fewer); 45 new jobs (larger county)</td>
+<td data-state="virginia">50 new jobs; 10 in distressed localities (unemployment and poverty above statewide rates)</td>
+<td data-state="ohio">No job count in statute; payroll requirement applies instead</td>
+<td data-state="maryland">5 qualified positions within three years</td>
+<td data-state="georgia">25 new quality jobs (county over 50,000); 10 (30,001 to 50,000); 5 (30,000 or fewer)</td>
+</tr>
+<tr><th scope="row">Wages</th>
+<td data-state="pennsylvania">At least $1M aggregate annual compensation at the site after the fourth anniversary of certification</td>
+<td data-state="virginia">Jobs must pay at least 1.5 times the prevailing average wage in the locality</td>
+<td data-state="ohio">At least $1.5M annual Ohio payroll</td>
+<td data-state="maryland">Full-time, net new, at least 150% of state minimum wage</td>
+<td data-state="georgia">Quality jobs must pay at least 110% of county average wage</td>
+</tr>
+<tr class="group"><th colspan="6" scope="colgroup">What the state gives</th></tr>
+<tr><th scope="row">What&#x27;s exempt</th>
+<td data-state="pennsylvania">Computer data center equipment installed in a certified data center; excludes local sales tax, labor, maintenance contracts, and tools</td>
+<td data-state="virginia">Computer equipment and enabling software, including servers, routers, chillers, and backup generators</td>
+<td data-state="ohio">Computer data center equipment, including delivery, installation, and repair; construction materials</td>
+<td data-state="maryland">Qualified data center personal property; electricity is not exempt</td>
+<td data-state="georgia">High-technology data center equipment and certain construction materials; state and local sales tax</td>
+</tr>
+<tr><th scope="row">How long</th>
+<td data-state="pennsylvania">25 full calendar years after the application year; qualified tenants up to 10 years</td>
+<td data-state="virginia">Through program sunset</td>
+<td data-state="ohio">Set in each agreement (examples: 10 and 15 years); exemption may be full or partial</td>
+<td data-state="maryland">10 years, renewed annually; 20 years with $250M+ investment</td>
+<td data-state="georgia">Through program sunset</td>
+</tr>
+<tr><th scope="row">Program sunset</th>
+<td data-state="pennsylvania">None identified</td>
+<td data-state="virginia">June 30, 2035; extensions to 2040 ($35B investment, 1,000 jobs) or 2050 ($100B investment)</td>
+<td data-state="ohio">None identified</td>
+<td data-state="maryland">None identified</td>
+<td data-state="georgia">December 31, 2031</td>
+</tr>
+<tr class="group"><th colspan="6" scope="colgroup">Accountability</th></tr>
+<tr><th scope="row">Clawback</th>
+<td data-state="pennsylvania">Department may revoke certification and recapture all or part of benefits if requirements are not met</td>
+<td data-state="virginia">MOU with VEDP sets repayment obligations if investment and job goals are not met</td>
+<td data-state="ohio">Authority may reduce the exemption&#x27;s percentage or term for noncompliance; if operations cease, it may terminate the agreement and require repayment of all or part of previously exempted taxes</td>
+<td data-state="maryland">Annual renewal; failure to maintain thresholds jeopardizes the exemption</td>
+<td data-state="georgia">Revenue commissioner may require a bond of up to $20M, forfeited if the minimum investment is not met</td>
+</tr>
+<tr><th scope="row">Public reporting</th>
+<td data-state="pennsylvania">Annual list of certifications; no reporting requirement at time of purchase, so actual cost is unknown</td>
+<td data-state="virginia">Operators report to VEDP; biennial report with return-on-investment analysis</td>
+<td data-state="ohio">Companies report annually to the Development director (financial details confidential); director reports annually by Aug 1 to the governor and legislative leaders on agreements and project status</td>
+<td data-state="maryland">Annual reports to Commerce; neither Commerce nor the Comptroller has data on the value of exemptions used</td>
+<td data-state="georgia">Final report to Department of Revenue after seven-year investment period</td>
+</tr>
+<tr><th scope="row">Formal evaluation</th>
+<td data-state="pennsylvania">None; as a sales tax exemption it falls outside the Act 48 tax credit review cycle</td>
+<td data-state="virginia">Yes: JLARC (2024)</td>
+<td data-state="ohio">None identified; statute requires an annual status report, not an effectiveness evaluation</td>
+<td data-state="maryland">None available</td>
+<td data-state="georgia">Yes: Department of Audits and Accounts (2022; updated 2025)</td>
+</tr>
+<tr><th scope="row">Evaluation finding</th>
+<td class="empty" data-state="pennsylvania">Not applicable</td>
+<td data-state="virginia">Influential factor in data center growth; moderate economic benefits</td>
+<td class="empty" data-state="ohio">Not applicable</td>
+<td class="empty" data-state="maryland">Not applicable</td>
+<td data-state="georgia">Negative net fiscal impact; about 70% of activity would have occurred without the exemption</td>
+</tr>
+<tr><th scope="row">Energy or water conditions</th>
+<td data-state="pennsylvania">None in the exemption; PUC separately proposed a large-load tariff framework</td>
+<td data-state="virginia">None; 2026 bills to add clean-energy conditions failed</td>
+<td data-state="ohio">None identified</td>
+<td data-state="maryland">None in the exemption</td>
+<td data-state="georgia">None identified</td>
+</tr>
+<tr class="group"><th colspan="6" scope="colgroup">Cost and status</th></tr>
+<tr><th scope="row">Estimated cost</th>
+<td data-state="pennsylvania">$115M (current FY); $188M (FY 2026-27); over $500M annually by 2030 (administration estimates)</td>
+<td data-state="virginia">$1B (FY 2024), up from $685M (FY 2023)</td>
+<td data-state="ohio">State only, calendar years: $554.9M (2024); about $1.57B (2025), against a $136M forecast for 2025. Local sales tax losses: $166.8M (2024); $446.3M (2025)</td>
+<td data-state="maryland">No official figure (10 approved data centers as of Feb 2026)</td>
+<td data-state="georgia">State and local: about $2.5B projected for FY 2026 (Governor&#x27;s tax expenditure report), against a $327M earlier estimate. State only: $474M in FY 2025 (University of Georgia audit)</td>
+</tr>
+<tr><th scope="row">2026 status</th>
+<td data-state="pennsylvania">In effect; April 2026 Senate co-sponsorship memo signals repeal interest</td>
+<td data-state="virginia">In effect; 2026-28 budget kept exemption, added a separate electricity tax, and ordered a tax policy study due Dec 15, 2026</td>
+<td data-state="ohio">New applications paused since May 27, 2026, through the end of Gov. DeWine&#x27;s term; existing agreements continue; the legislature did not agree on reform in June; repeal bills (HB 975, SB 374) in committee</td>
+<td data-state="maryland">In effect; Sept 23, 2026 executive order put Gov. Moore on record for repeal; repeal bill HB 560 saw no action after hearing</td>
+<td data-state="georgia">In effect; 2026 bills to repeal, suspend, or sunset early did not pass</td>
+</tr>
+<tr><th scope="row">Still to verify</th>
+<td class="empty" data-state="pennsylvania">Nothing outstanding</td>
+<td class="empty" data-state="virginia">Nothing outstanding</td>
+<td class="empty" data-state="ohio">Nothing outstanding</td>
+<td class="empty" data-state="maryland">Nothing outstanding</td>
+<td data-state="georgia">Whether repayment of exempted taxes applies beyond the bond</td>
+</tr>
+<tr class="group"><th colspan="6" scope="colgroup">Sources</th></tr>
+<tr><th scope="row">Sources</th>
+<td class="sources" data-state="pennsylvania"><a href="https://www.pa.gov/agencies/revenue/business-tax-credits-and-economic-development-programs/business-tax-credits-and-incentives/computer-data-center-equipment-program" rel="noopener">pa.gov</a><a href="https://www.palegis.us/senate/co-sponsorship/memo?memoID=48539" rel="noopener">palegis.us</a><a href="https://www.spotlightpa.org/news/2026/02/data-centers-pennsylvania-tax-break-sales-exemption-capitol/" rel="noopener">spotlightpa.org</a></td>
+<td class="sources" data-state="virginia"><a href="https://www.vedp.org/incentive/data-center-retail-sales-use-tax-exemption" rel="noopener">vedp.org</a><a href="https://jlarc.virginia.gov/pdfs/presentations/RptPres518.pdf" rel="noopener">jlarc.virginia.gov</a><a href="https://sfac.virginia.gov/pdf/retreat/2023 Tysons/13. Datacenters Panel.pdf" rel="noopener">sfac.virginia.gov</a><a href="https://servercountry.org/policy/virginia/" rel="noopener">servercountry.org</a></td>
+<td class="sources" data-state="ohio"><a href="https://codes.ohio.gov/ohio-revised-code/section-122.175" rel="noopener">codes.ohio.gov</a><a href="https://governor.ohio.gov/media/news-and-media/governor-dewine-announces-pause-of-data-center-tax-exemption" rel="noopener">governor.ohio.gov</a><a href="https://www.news5cleveland.com/news/local-news/oh-cuyahoga/calls-for-change-as-ohio-sales-tax-break-for-data-centers-approaches-1-6-billion-a-year" rel="noopener">news5cleveland.com</a><a href="https://signalohio.org/ohio-data-center-tax-break-cost-1-4-billion-more-than-expected-in-2025/" rel="noopener">signalohio.org</a><a href="https://www.nbc4i.com/news/politics/ohio-bill-would-end-data-center-tax-breaks-effective-oct-1/" rel="noopener">nbc4i.com</a></td>
+<td class="sources" data-state="maryland"><a href="https://commerce.maryland.gov/fund/data-center-maryland-sales-and-use-tax-exemption-incentive-program" rel="noopener">commerce.maryland.gov</a><a href="https://mgaleg.maryland.gov/2026RS/fnotes/bil_0000/hb0560.pdf" rel="noopener">mgaleg.maryland.gov</a><a href="https://mdbaynews.com/2026/09/23/wes-moore-maryland-data-center-review-dashboard/" rel="noopener">mdbaynews.com</a></td>
+<td class="sources" data-state="georgia"><a href="https://dor.georgia.gov/high-technology-data-center-equipment-exemption" rel="noopener">dor.georgia.gov</a><a href="https://www.ajc.com/business/2026/02/georgias-sales-tax-breaks-for-data-centers-tally-more-than-25-billion/" rel="noopener">ajc.com</a><a href="https://www.audits2.ga.gov/reports/summaries/georgia-data-center-sales-use-tax-exemption/" rel="noopener">audits2.ga.gov</a><a href="https://servercountry.org/policy/georgia/" rel="noopener">servercountry.org</a><a href="https://computelaw.blog/tax/georgia-ai-data-center-sales-tax-exemption/" rel="noopener">computelaw.blog</a></td>
+</tr>
+<tr><th scope="row">Last updated</th>
+<td data-state="pennsylvania">2026-09-24</td>
+<td data-state="virginia">2026-09-24</td>
+<td data-state="ohio">2026-09-24</td>
+<td data-state="maryland">2026-09-24</td>
+<td data-state="georgia">2026-09-24</td>
+</tr>
+</tbody>
+</table>
+      </div>
+    </div>
+  </section>
+
+  <section id="analysis">
+    <div class="wrap">
+      <div class="analysis">
+        <div>
+          <h2>What stands out</h2>
+          <h3>Entry thresholds vary widely</h3>
+          <p>Maryland requires $2 million in investment and five jobs in its Tier 1 areas. Georgia requires $250 million and 25 jobs in its largest counties. Virginia, the largest market, requires $150 million and 50 jobs.</p>
+          <h3>Costs have outpaced projections</h3>
+          <p>Ohio forecast $136 million for 2025; state-only losses came to about $1.57 billion. Georgia's estimate for fiscal 2026, including local losses, rose from $327 million to about $2.5 billion.</p>
+          <h3>Formal evaluation is the exception</h3>
+          <p>Virginia and Georgia have independently evaluated their programs. Pennsylvania's exemption falls outside the Act 48 cycle that reviews the Commonwealth's tax credits, and neither Pennsylvania nor Maryland collects data on the actual value of exemptions claimed.</p>
+        </div>
+        <div>
+          <h2>What to watch</h2>
+          <ul class="watch">
+            <li>Virginia's Joint Subcommittee on Tax Policy reports on the exemption by December 15, 2026.</li>
+            <li>Maryland's General Assembly returns in January with repeal on the table.</li>
+            <li>Ohio's Joint Data Center Committee will shape whether and how the paused program resumes.</li>
+            <li>Georgia's 2027 session is widely expected to revisit the exemption.</li>
+          </ul>
+          <p class="question">The question that will shape the next round: whether states change who qualifies, or what they require in return, through reporting, evaluation, and conditions tied to energy and water use.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap measure">
+    <p>Compiled by Joshua Phoebus, former Director of Performance and Transformation in the Office of Pennsylvania Governor Tom Wolf. <a href="https://www.linkedin.com/in/joshuaphoebus">LinkedIn</a> · <a href="https://www.joshuaphoebusllc.com">Website</a></p>
+    <p>Each state's sources are listed in the table. Where a detail could not be confirmed, the table says so. The underlying data is in <a href="data-center-incentives.csv">data-center-incentives.csv</a>. This comparison is for policy analysis and is not tax or legal advice.</p>
+  </div>
+</footer>
+
+<script>
+  // Each state button shows or hides that state's column. The table itself is plain HTML,
+  // so it displays even if this script never runs.
+  document.querySelectorAll("#filters .chip").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var on = b.getAttribute("aria-pressed") === "true";
+      b.setAttribute("aria-pressed", on ? "false" : "true");
+      document.querySelectorAll('#table [data-state="' + b.dataset.state + '"]').forEach(function (c) {
+        c.hidden = on;
+      });
+    });
+  });
+</script>
+</body>
+</html>
