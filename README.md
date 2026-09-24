@@ -2,6 +2,9 @@
 
 A side-by-side comparison of the sales and use tax exemptions that Pennsylvania, Virginia, Ohio, Maryland, and Georgia offer data centers, current as of September 2026.
 
+**Interactive version:** [jphoebus.github.io/state-incentive-comparison](https://jphoebus.github.io/state-incentive-comparison/)
+
+
 ## Why this comparison
 
 For most states, the sales tax exemption on data center equipment is the primary incentive for attracting the industry. Because operators replace servers and other equipment every few years, the cost of these exemptions grows with the industry itself, and several states have seen actual costs far exceed their early projections. In 2026, all five programs in this comparison are under review, each through a different route. Understanding how the programs differ in design helps explain where each state's debate is likely to go next.
