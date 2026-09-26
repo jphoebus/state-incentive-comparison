@@ -4,6 +4,8 @@ A side-by-side comparison of the sales and use tax exemptions that Pennsylvania,
 
 **Interactive version:** [jphoebus.github.io/state-incentive-comparison](https://jphoebus.github.io/state-incentive-comparison/)
 
+**Companion project:** [How states check their tax incentives](https://jphoebus.github.io/tax-incentive-evaluation/)
+
 
 ## Why this comparison
 
