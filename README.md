@@ -16,10 +16,11 @@ For most states, the sales tax exemption on data center equipment is the primary
 - **Entry thresholds vary widely.** Maryland requires $2 million in investment and five jobs in its Tier 1 areas. Georgia requires $250 million and 25 jobs in its largest counties. Virginia, the largest market, requires $150 million and 50 jobs.
 - **Costs have outpaced projections.** Ohio forecast $136 million for 2025; state-only losses came to about $1.57 billion. Georgia's estimate for fiscal 2026, including local losses, rose from $327 million to about $2.5 billion.
 - **Formal evaluation is the exception.** Virginia and Georgia have independently evaluated their programs. Pennsylvania's exemption falls outside the Act 48 cycle that reviews the Commonwealth's tax credits, and neither Pennsylvania nor Maryland collects data on the actual value of exemptions claimed.
-- **Every program is in motion.** Ohio paused new applications in May 2026. Maryland's governor backed repeal in September 2026. Virginia's legislature is studying the exemption, a Pennsylvania Senate memo signals repeal interest, and bills to end Georgia's program early did not pass.
+- **Every program is in motion.** Ohio paused new applications in May 2026. Maryland's governor backed repeal in September 2026. Virginia's legislature is studying the exemption, Pennsylvania's House and Senate each passed repeal language in June, though neither bill was enacted, and bills to end Georgia's program early did not pass.
 
 ## What to watch
 
+- Pennsylvania's legislature has 11 session days per chamber left this year to act on repeal.
 - Virginia's Joint Subcommittee on Tax Policy reports on the exemption by December 15, 2026.
 - Maryland's General Assembly returns in January with repeal on the table.
 - Ohio's Joint Data Center Committee will shape whether and how the paused program resumes.
