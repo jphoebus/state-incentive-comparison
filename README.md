@@ -20,7 +20,7 @@ For most states, the sales tax exemption on data center equipment is the primary
 
 ## What to watch
 
-- Pennsylvania's legislature has 11 session days per chamber left this year to act on repeal.
+- Pennsylvania's fall session: the Senate has not yet acted on the House-passed repeal (HB 2198).
 - Virginia's Joint Subcommittee on Tax Policy reports on the exemption by December 15, 2026.
 - Maryland's General Assembly returns in January with repeal on the table.
 - Ohio's Joint Data Center Committee will shape whether and how the paused program resumes.
