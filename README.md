@@ -32,6 +32,12 @@ Across all five states, a key question is whether the next round of changes focu
 
 The full comparison is in [data-center-incentives.csv](data-center-incentives.csv), with one row per state and 20 columns covering legal authority, investment and job requirements, benefit duration, clawback provisions, public reporting, evaluation findings, estimated cost, and 2026 status. Each row lists its sources. Where a detail could not be confirmed, the file says so rather than guessing. This comparison is for policy analysis and is not tax or legal advice.
 
+## Related projects
+
+- [What states changed on data centers in 2026](https://jphoebus.github.io/data-center-legislation-2026/)
+- [How states check their tax incentives](https://jphoebus.github.io/tax-incentive-evaluation/)
+- [DOE's SPARK grid selections, tracked](https://jphoebus.github.io/spark-grid-tracker/)
+
 ## About me
 
 I'm Joshua Phoebus. I spent seven and a half years in Pennsylvania state government, including four years as Director of Performance and Transformation in the Office of Governor Tom Wolf, where I led the Commonwealth's performance-based budgeting engagement across twenty-nine executive agencies and guided agencies on compliance with the tax credit reviews required under Act 48.
