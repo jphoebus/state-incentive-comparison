@@ -37,6 +37,7 @@ The full comparison is in [data-center-incentives.csv](data-center-incentives.cs
 - [What states changed on data centers in 2026](https://jphoebus.github.io/data-center-legislation-2026/)
 - [How states check their tax incentives](https://jphoebus.github.io/tax-incentive-evaluation/)
 - [DOE's SPARK grid selections, tracked](https://jphoebus.github.io/spark-grid-tracker/)
+- [What counts as exempt data center equipment](https://jphoebus.github.io/data-center-exempt-equipment/)
 
 ## About me
 
