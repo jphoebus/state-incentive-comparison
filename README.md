@@ -1,6 +1,6 @@
 # State Data Center Incentives: A Five-State Comparison
 
-A side-by-side comparison of the sales and use tax exemptions that Pennsylvania, Virginia, Ohio, Maryland, and Georgia offer data centers, current as of September 2026.
+A side-by-side comparison of the sales and use tax exemptions that Pennsylvania, Virginia, Ohio, Maryland, and Georgia offer data centers, current as of October 2026.
 
 **Interactive version:** [jphoebus.github.io/state-incentive-comparison](https://jphoebus.github.io/state-incentive-comparison/)
 
